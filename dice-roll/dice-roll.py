@@ -18,7 +18,7 @@ except ValueError:
 while True:
     print("\nDevam etmek için Enter tuşuna basınız.")
     print("Oyundan çıkmak için q yazınız.")
-    secim = input("Seçiminiz: ")
+    secim = input("Seçiminiz: ").strip().lower()
 
     if secim == "q":
         print("Oyun sonlandırıldı.")
@@ -37,11 +37,9 @@ while True:
     if player_dice > computer_dice:
         print("Kazandınız!")
         player_score += 1
-            
     elif player_dice < computer_dice:
         print("Kaybettiniz!")
         computer_score += 1
-
     else:
         print("Berabere!")
 
