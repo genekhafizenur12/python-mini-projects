@@ -28,8 +28,6 @@ def uzunluk():
         print("Hatalı Seçim!")
         return None, None, None, None
 
-    
-
     if hedef_birim == "1":
         sonuc_degeri = metre_degeri * 100
     elif hedef_birim == "2":
@@ -47,6 +45,94 @@ def uzunluk():
 
     return sonuc_degeri, deger, kaynak_birim, hedef_birim
 
+def agirlik():
+    print("\n1. Miligram")
+    print("2. Gram")
+    print("3. Kilogram")
+    print("4. Pound(Libre)")
+    print("5. Çıkış")
+
+    try:
+        kaynak_birim = input("\nHangi birimi cevirmek istersiniz(1-4): ")
+        hedef_birim = input("Hangi birime çevirmek istiyorsunuz(1-4): ")
+        deger = float(input("\nSayınızı giriniz: "))
+    except ValueError:
+        print("Sayı Giriniz!")
+        return None, None, None, None
+
+    if kaynak_birim == "1":
+        gram_degeri = deger * 0.01
+    elif kaynak_birim == "2":
+        gram_degeri = deger
+    elif kaynak_birim == "3":
+        gram_degeri = deger * 1000
+    elif kaynak_birim == "4":
+        gram_degeri = deger * 453.592
+    elif kaynak_birim == "5":
+        print("Çıkış Yapıyorsunuz!")
+        return None, None, None, None
+    else:
+        print("Hatalı Seçim!")
+        return None, None, None, None
+
+    if hedef_birim == "1":
+        sonuc_degeri = gram_degeri * 100
+    elif hedef_birim == "2":
+        sonuc_degeri = gram_degeri
+    elif hedef_birim == "3":
+        sonuc_degeri = gram_degeri / 1000
+    elif hedef_birim == "4":
+        sonuc_degeri = gram_degeri / 453.592
+    elif hedef_birim == "5":
+        print("Çıkış Yapıyorsunuz!")
+        return None, None, None, None
+    else:
+        print("Hatalı Seçim!")
+        return None, None, None, None
+    
+    return sonuc_degeri, deger, kaynak_birim, hedef_birim
+
+def sicaklik():
+    print("\n1. Celsius(°C)")
+    print("2. Fahrenheit(°F)")
+    print("3. Kelvin(K)")
+    print("4. Çıkış")
+
+    try:
+        kaynak_birim = input("\nHangi birimi cevirmek istersiniz(1-4): ")
+        hedef_birim = input("Hangi birime çevirmek istiyorsunuz(1-4): ")
+        deger = float(input("\nSayınızı giriniz: "))
+    except ValueError:
+        print("Sayı Giriniz!")
+        return None, None, None, None
+
+    if kaynak_birim == "1":
+        Celsius_degeri = deger 
+    elif kaynak_birim == "2":
+        Celsius_degeri = (deger - 32) * 5/9
+    elif kaynak_birim == "3":
+        Celsius_degeri = deger - 273.15
+    elif kaynak_birim == "4":
+        print("Çıkış Yapıyorsunuz!")
+        return None, None, None, None
+    else:
+        print("Hatalı Seçim!")
+        return None, None, None, None
+
+    if hedef_birim == "1":
+        sonuc_degeri = Celsius_degeri 
+    elif hedef_birim == "2":
+        sonuc_degeri = ( Celsius_degeri * 9/5) + 32
+    elif hedef_birim == "3":
+        sonuc_degeri = Celsius_degeri + 273.15
+    elif hedef_birim == "4":
+        print("Çıkış Yapıyorsunuz!")
+        return None, None, None, None
+    else:
+        print("Hatalı Seçim!")
+        return None, None, None, None
+
+    return sonuc_degeri, deger, kaynak_birim, hedef_birim
     
 while True:
 
@@ -80,17 +166,56 @@ while True:
         elif hedef_birim == "4":
             hedef_birim = "Mil"
 
-        print(f"\n{deger} degerini {kaynak_birim} biriminden {hedef_birim} birimine çevrildi. Sonucunuz: {sonuc_degeri}")
     elif secim == "2":
-        pass
+        sonuc_degeri, deger, kaynak_birim, hedef_birim = agirlik()
+        if sonuc_degeri is None:
+            continue
+
+        if kaynak_birim =="1":
+            kaynak_birim = "Miligram"
+        elif kaynak_birim == "2":
+            kaynak_birim = "Gram"
+        elif kaynak_birim == "3":
+            kaynak_birim = "Kilogram"
+        elif kaynak_birim == "4":
+            kaynak_birim = "Pound(Libre)"
+        
+        if hedef_birim =="1":
+            hedef_birim = "Miligram"
+        elif hedef_birim == "2":
+            hedef_birim = "Gram"
+        elif hedef_birim == "3":
+            hedef_birim = "Kilogram"
+        elif hedef_birim == "4":
+            hedef_birim = "Pound(Libre)"
+
     elif secim == "3":
-        pass
+        sonuc_degeri, deger, kaynak_birim, hedef_birim = sicaklik()
+        if sonuc_degeri is None:
+            continue
+
+        if kaynak_birim =="1":
+            kaynak_birim = "Celsius(°C)"
+        elif kaynak_birim == "2":
+            kaynak_birim = "Fahrenheit(°F)"
+        elif kaynak_birim == "3":
+            kaynak_birim = "Kelvin(K)"
+        
+        if hedef_birim =="1":
+            hedef_birim = "Celsius(°C)"
+        elif hedef_birim == "2":
+            hedef_birim = "Fahrenheit(°F)"
+        elif hedef_birim == "3":
+            hedef_birim = "Kelvin(K)"
+        
     elif secim == "4":
         print("Çıkış Yapıyorsunuz!")
         exit()
     else:
         print("Hatalı Seçim!")
         break
+
+    print(f"\n{deger} degerini {kaynak_birim} biriminden {hedef_birim} birimine çevrildi. Sonucunuz: {round(sonuc_degeri, 2)}")
 
     
     
